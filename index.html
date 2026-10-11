@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Czy pada?</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <h1>Czy pada? 🌧️</h1>
+    <p class="subtitle">
+      Sprawdź aktualne pomiary pogodowe IMGW.
+    </p>
+
+    <section class="weather-card">
+      <label for="city">Wybierz miasto</label>
+
+      <select id="city">
+        <option value="Warszawa">Warszawa</option>
+        <option value="Kraków">Kraków</option>
+        <option value="Gdańsk">Gdańsk</option>
+        <option value="Wrocław">Wrocław</option>
+        <option value="Poznań">Poznań</option>
+      </select>
+
+      <button id="check-weather">
+        Sprawdź pogodę
+      </button>
+
+      <p id="status" role="status">
+        Wybierz miasto i pobierz pomiar.
+      </p>
+
+      <div id="result" hidden>
+        <h2 id="rain-status"></h2>
+        <p id="details"></p>
+      </div>
+    </section>
+
+    <p class="footnote">
+      Wynik zależy od dostępności i aktualności pomiarów.
+    </p>
+  </main>
+</body>
+</html>
