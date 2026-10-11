@@ -49,6 +49,8 @@ async function checkWeather() {
 
     details.textContent =
       `Stacja: ${station.stacja}. ` +
+      `Pomiar: ${station.data_pomiaru}, ` +
+      `godz. ${station.godzina_pomiaru}. ` +
       `Suma opadu: ${precipitation} mm. ` +
       `Temperatura: ${station.temperatura}°C.`;
 
