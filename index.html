@@ -12,36 +12,45 @@
   <main class="app">
     <h1>Czy pada? 🌧️</h1>
     <p class="subtitle">
-      Sprawdź aktualne pomiary pogodowe IMGW.
+      Sprawdź, czy pada teraz w Twojej okolicy.
     </p>
 
     <section class="weather-card">
-      <label for="city">Wybierz miasto</label>
+      <section class="location-check" aria-labelledby="location-title">
+        <h2 id="location-title">Pogoda w Twojej lokalizacji</h2>
+        <p>Użyj lokalizacji urządzenia, aby sprawdzić aktualny opad w pobliżu.</p>
+        <button id="use-location" type="button">Sprawdź w mojej lokalizacji</button>
+      </section>
 
-      <select id="city">
-        <option value="52.23,21.01" data-station="Warszawa">Warszawa</option>
-        <option value="50.06,19.94" data-station="Kraków">Kraków</option>
-        <option value="54.35,18.65" data-station="Gdańsk">Gdańsk</option>
-        <option value="51.11,17.04" data-station="Wrocław">Wrocław</option>
-        <option value="52.41,16.93" data-station="Poznań">Poznań</option>
-      </select>
+      <div class="divider"><span>lub wybierz miasto</span></div>
 
-      <button id="check-weather">
-        Sprawdź pogodę
-      </button>
+      <div class="city-check">
+        <label for="city">Wybierz miasto</label>
+
+        <select id="city">
+          <option value="52.23,21.01" data-station="Warszawa">Warszawa</option>
+          <option value="50.06,19.94" data-station="Kraków">Kraków</option>
+          <option value="54.35,18.65" data-station="Gdańsk">Gdańsk</option>
+          <option value="51.11,17.04" data-station="Wrocław">Wrocław</option>
+          <option value="52.41,16.93" data-station="Poznań">Poznań</option>
+        </select>
+
+        <button id="check-weather" type="button">Sprawdź pogodę</button>
+      </div>
 
       <p id="status" role="status">
-        Wybierz miasto i pobierz pomiar.
+        Wybierz lokalizację, aby pobrać aktualne dane.
       </p>
 
       <div id="result" hidden>
+        <p id="weather-location"></p>
         <h2 id="rain-status"></h2>
         <p id="details"></p>
       </div>
     </section>
 
     <p class="footnote">
-      Wynik zależy od dostępności i aktualności pomiarów.
+      Dane pogodowe pochodzą z Open-Meteo. Lokalizacja jest używana tylko do pobrania pogody.
     </p>
   </main>
 </body>
