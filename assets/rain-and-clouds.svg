@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1000" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="720" y1="0" x2="720" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5E89AA"/>
+      <stop offset="1" stop-color="#DDECF5"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9E7F0"/>
+      <stop offset="1" stop-color="#91AEC2"/>
+    </linearGradient>
+    <filter id="cloudShadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="11" flood-color="#31546D" flood-opacity=".2"/>
+    </filter>
+  </defs>
+  <rect width="1440" height="1000" fill="url(#sky)"/>
+  <g fill="url(#cloud)" filter="url(#cloudShadow)">
+    <path d="M433 195c-11-56-59-98-117-98-63 0-115 48-122 109-53 1-96 44-96 98 0 55 44 99 99 99h238c55 0 99-44 99-99 0-55-44-99-99-99h-2Z"/>
+    <path d="M1275 683c-10-50-52-87-103-87-56 0-102 42-108 97-46 1-83 38-83 85 0 47 38 86 85 86h208c48 0 87-39 87-87 0-47-38-86-85-87h-2Z"/>
+  </g>
+  <g stroke="#4A9FD0" stroke-linecap="round" stroke-width="10" opacity=".9">
+    <path d="m172 474-28 61"/>
+    <path d="m264 495-28 61"/>
+    <path d="m356 474-28 61"/>
+    <path d="m1044 912-28 61"/>
+    <path d="m1136 933-28 61"/>
+    <path d="m1228 912-28 61"/>
+  </g>
+  <g fill="none" stroke="#BED9E8" stroke-linecap="round" stroke-width="6" opacity=".7">
+    <path d="M137 332c52 29 115 31 169 6"/>
+    <path d="M1016 792c43 20 91 22 133 4"/>
+  </g>
+</svg>

@@ -6,6 +6,7 @@ const resultBox = document.querySelector("#result");
 const weatherLocation = document.querySelector("#weather-location");
 const rainStatus = document.querySelector("#rain-status");
 const details = document.querySelector("#details");
+const imgwDetails = document.querySelector("#imgw-details");
 
 checkButton.addEventListener("click", checkWeather);
 locationButton.addEventListener("click", checkLocationWeather);
@@ -19,6 +20,7 @@ function checkWeather() {
 
 function checkLocationWeather() {
   if (!navigator.geolocation) {
+    setWeatherBackground();
     statusText.textContent = "Ta przeglądarka nie obsługuje lokalizacji urządzenia.";
     return;
   }
@@ -30,6 +32,7 @@ function checkLocationWeather() {
       loadWeather(coords.latitude, coords.longitude, place);
     },
     error => {
+      setWeatherBackground();
       const message = error.code === error.PERMISSION_DENIED
         ? "Brak zgody na lokalizację. Możesz wybrać miasto poniżej."
         : error.code === error.POSITION_UNAVAILABLE
@@ -65,25 +68,32 @@ async function loadWeather(lat, lon, place, stationName) {
     // Prognoza na najbliższą godzinę (4 x 15 min)
     const next = data.minutely_15?.precipitation ?? [];
     const willRain = next.some(v => v > 0);
+    const isCloudy = [2, 3].includes(current.weather_code);
+    const background = snowing
+      ? "snow"
+      : raining
+        ? "rain"
+        : isCloudy ? "cloudy" : "sunny";
 
     if (raining) {
       rainStatus.textContent = snowing ? "🌨️ Teraz pada śnieg" : "🌧️ Teraz pada";
     } else if (willRain) {
       rainStatus.textContent = "🌦️ Nie pada, ale w ciągu godziny może zacząć";
     } else {
-      rainStatus.textContent = "🌤️ Teraz nie pada";
+      rainStatus.textContent = isCloudy ? "⛅ Teraz nie pada" : "🌤️ Teraz nie pada";
     }
 
-    let text =
+    const text =
       `Opad teraz: ${current.precipitation} mm. ` +
       `Temperatura: ${current.temperature_2m}°C. `;
+    let imgwText = "";
 
     if (stationName) {
       try {
         const imgw = await fetchImgwStation(stationName);
         if (imgw) {
-          text +=
-            `Stacja IMGW ${imgw.stacja}: pomiar z ${imgw.data_pomiaru}, ` +
+          imgwText =
+            `Dane historyczne ze stacji IMGW ${imgw.stacja}: pomiar z ${imgw.data_pomiaru}, ` +
             `godz. ${imgw.godzina_pomiaru}:00, suma opadu ${imgw.suma_opadu} mm.`;
         }
       } catch {
@@ -93,10 +103,14 @@ async function loadWeather(lat, lon, place, stationName) {
 
     weatherLocation.textContent = place;
     details.textContent = text;
+    imgwDetails.textContent = imgwText;
+    imgwDetails.hidden = !imgwText;
     resultBox.hidden = false;
+    setWeatherBackground(background);
     statusText.textContent =
       `Zaktualizowano: ${new Date().toLocaleTimeString("pl-PL")}`;
   } catch (error) {
+    setWeatherBackground();
     statusText.textContent = `Nie udało się pobrać danych pogodowych: ${error.message}`;
   } finally {
     setButtonsDisabled(false);
@@ -104,9 +118,15 @@ async function loadWeather(lat, lon, place, stationName) {
 }
 
 function setLoading(message) {
+  setWeatherBackground();
   setButtonsDisabled(true);
   statusText.textContent = message;
   resultBox.hidden = true;
+}
+
+function setWeatherBackground(background) {
+  document.body.classList.toggle("has-weather-background", Boolean(background));
+  document.body.dataset.weatherBackground = background ?? "";
 }
 
 function setButtonsDisabled(disabled) {

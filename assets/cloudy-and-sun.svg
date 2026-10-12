@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1000" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="720" y1="0" x2="720" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8DC8E7"/>
+      <stop offset="1" stop-color="#EEF8FC"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0" cy="0" r="1" gradientTransform="translate(260 208) rotate(90) scale(94)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF5A7"/>
+      <stop offset="1" stop-color="#FFD15A"/>
+    </radialGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF"/>
+      <stop offset="1" stop-color="#C8DFEC"/>
+    </linearGradient>
+    <filter id="cloudShadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#6389A0" flood-opacity=".16"/>
+    </filter>
+  </defs>
+  <rect width="1440" height="1000" fill="url(#sky)"/>
+  <g stroke="#F3B946" stroke-linecap="round" stroke-width="7" opacity=".85">
+    <path d="M260 80V52"/>
+    <path d="m351 117 20-20"/>
+    <path d="M388 208h28"/>
+  </g>
+  <circle cx="260" cy="208" r="70" fill="url(#sun)"/>
+  <g fill="url(#cloud)" filter="url(#cloudShadow)">
+    <path d="M365 265c-10-51-53-89-105-89-56 0-102 42-108 98-46 1-83 38-83 85 0 47 38 85 85 85h208c47 0 85-38 85-85 0-47-38-85-82-94Z"/>
+    <path d="M1211 238c-11-56-59-98-117-98-63 0-115 48-122 109-53 1-96 44-96 98 0 55 44 99 99 99h238c55 0 99-44 99-99 0-55-44-99-99-99h-2Z"/>
+    <path d="M431 790c-9-47-49-82-98-82-53 0-97 40-103 92-45 0-82 36-82 81 0 46 37 83 83 83h203c46 0 83-37 83-83 0-46-37-84-83-91Z"/>
+  </g>
+  <g fill="none" stroke="#AFCFDF" stroke-linecap="round" stroke-width="6" opacity=".75">
+    <path d="M91 387c45 25 98 28 145 8"/>
+    <path d="M914 382c51 29 112 31 165 8"/>
+    <path d="M168 908c43 23 92 27 136 9"/>
+  </g>
+</svg>
